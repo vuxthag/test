@@ -1,8 +1,20 @@
-import streamlit as st
 import os
-for k in ["HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY", "all_proxy"]:
-    os.environ.pop(k, None)
+import streamlit as st
+import httpx
 from openai import OpenAI
+
+# 🚫 TẠO HTTPX CLIENT KHÔNG PROXY (FIX TRIỆT ĐỂ)
+http_client = httpx.Client(
+    timeout=30.0,
+    proxies=None,
+    trust_env=False  # 🔥 CỰC KỲ QUAN TRỌNG
+)
+
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("OPENAI_BASE_URL"),
+    http_client=http_client,  # 👈 ÉP DÙNG CLIENT SẠCH
+)
 
 # =====================================================
 # OPENAI CLIENT
@@ -174,4 +186,5 @@ def render_chatbot():
             {"role": "assistant", "content": reply}
         )
         render_chat()  # 🔥 HIỆN NGAY – KHÔNG ĐỢI LẦN SAU
+
 
