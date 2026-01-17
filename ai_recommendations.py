@@ -43,7 +43,7 @@ def generate_ai_recommendations(analysis_data):
         
         # Call OpenAI API
         response = client.chat.completions.create(
-            model="gpt-5-mini",  # Hoặc "gpt-4o-mini" để rẻ hơn
+            model="gpt-4o-mini",  # Hoặc "gpt-4o-mini" để rẻ hơn
             messages=[
                 {
                     "role": "system",
@@ -331,3 +331,4 @@ def get_fallback_recommendations(data):
 
 💡 **Để có khuyến nghị chi tiết từ AI, vui lòng thử lại sau hoặc kiểm tra API key.**
 """
+
