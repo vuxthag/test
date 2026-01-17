@@ -1,27 +1,13 @@
-import os
 import streamlit as st
-import httpx
+import os
 from openai import OpenAI
-
-# 🚫 TẠO HTTPX CLIENT KHÔNG PROXY (FIX TRIỆT ĐỂ)
-http_client = httpx.Client(
-    timeout=30.0,
-    proxies=None,
-    trust_env=False  # 🔥 CỰC KỲ QUAN TRỌNG
-)
-
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
-    base_url=os.getenv("OPENAI_BASE_URL"),
-    http_client=http_client,  # 👈 ÉP DÙNG CLIENT SẠCH
-)
 
 # =====================================================
 # OPENAI CLIENT
 # =====================================================
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
-    base_url=os.getenv("OPENAI_BASE_URL"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+
 # =====================================================
 # CONTEXT (READ ONLY)
 # =====================================================
@@ -75,7 +61,7 @@ Trả lời như HLV đang đứng cạnh người chơi.
 """
 
     res = client.chat.completions.create(
-        model="google/gemini-2.0-flash-exp:free",
+        model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -186,6 +172,3 @@ def render_chatbot():
             {"role": "assistant", "content": reply}
         )
         render_chat()  # 🔥 HIỆN NGAY – KHÔNG ĐỢI LẦN SAU
-
-
-
