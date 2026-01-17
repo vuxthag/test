@@ -64,7 +64,7 @@ def generate_ai_recommendations(analysis_data):
                 }
             ],
             temperature=0.75,  # Vừa creative vừa consistent
-            max_tokens=1800,
+            max_completion_tokens=1800,
             top_p=0.9
         )
         
@@ -331,4 +331,5 @@ def get_fallback_recommendations(data):
 
 💡 **Để có khuyến nghị chi tiết từ AI, vui lòng thử lại sau hoặc kiểm tra API key.**
 """
+
 
