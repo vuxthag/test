@@ -61,7 +61,7 @@ Trả lời như HLV đang đứng cạnh người chơi.
 """
 
     res = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-5-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
@@ -172,3 +172,4 @@ def render_chatbot():
             {"role": "assistant", "content": reply}
         )
         render_chat()  # 🔥 HIỆN NGAY – KHÔNG ĐỢI LẦN SAU
+
