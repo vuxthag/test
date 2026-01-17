@@ -66,7 +66,6 @@ Trả lời như HLV đang đứng cạnh người chơi.
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-        temperature=0.6,
         max_completion_tokens=500,
     )
 
@@ -172,6 +171,7 @@ def render_chatbot():
             {"role": "assistant", "content": reply}
         )
         render_chat()  # 🔥 HIỆN NGAY – KHÔNG ĐỢI LẦN SAU
+
 
 
 
