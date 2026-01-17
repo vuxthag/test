@@ -1,0 +1,8 @@
+[phases.setup]
+aptPkgs = ["libgl1", "libglib2.0-0", "libsm6", "libxrender1", "libxext6", "libgomp1"]
+nixPkgs = ["python311"]
+
+[phases.install]
+
+[start]
+cmd = "chmod +x start.sh && bash start.sh"
