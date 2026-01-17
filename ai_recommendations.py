@@ -11,19 +11,13 @@ import streamlit as st
 load_dotenv()
 
 def get_openai_client():
-    """Initialize OpenAI client for AgentRouter (Claude)"""
-    api_key = os.getenv("OPENAI_API_KEY")
-    base_url = os.getenv("OPENAI_BASE_URL")
-
+    """Initialize OpenAI client"""
+    api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
         raise ValueError("⚠️ OPENAI_API_KEY not found in .env file")
-    if not base_url:
-        raise ValueError("⚠️ OPENAI_BASE_URL not found in .env file")
+    return OpenAI(api_key=api_key)
 
-    return OpenAI(
-        api_key=api_key,
-        base_url=base_url
-    )
+
 def generate_ai_recommendations(analysis_data):
     """
     Tạo khuyến nghị chi tiết bằng AI dựa trên dữ liệu phân tích
@@ -49,7 +43,7 @@ def generate_ai_recommendations(analysis_data):
         
         # Call OpenAI API
         response = client.chat.completions.create(
-            model="google/gemini-2.0-flash-exp:free",  # Hoặc "gpt-4o-mini" để rẻ hơn
+            model="gpt-5-mini",  # Hoặc "gpt-4o-mini" để rẻ hơn
             messages=[
                 {
                     "role": "system",
@@ -337,4 +331,3 @@ def get_fallback_recommendations(data):
 
 💡 **Để có khuyến nghị chi tiết từ AI, vui lòng thử lại sau hoặc kiểm tra API key.**
 """
-
