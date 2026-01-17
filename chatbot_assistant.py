@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+for k in ["HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy", "ALL_PROXY", "all_proxy"]:
+    os.environ.pop(k, None)
 from openai import OpenAI
 
 # =====================================================
@@ -172,3 +174,4 @@ def render_chatbot():
             {"role": "assistant", "content": reply}
         )
         render_chat()  # 🔥 HIỆN NGAY – KHÔNG ĐỢI LẦN SAU
+
